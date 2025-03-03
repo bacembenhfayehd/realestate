@@ -1,14 +1,29 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import images from '@/constants/images'
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-const SignIn = () => {
+import icons from "@/constants/icons";
+import images from "@/constants/images";
+
+const Auth = () => {
+
+
+  const handleLogin = async () => {
+   
+  };
+
   return (
     <SafeAreaView className="bg-white h-full">
       <ScrollView
         contentContainerStyle={{
-          height: "100%",
+          height: "85%",
         }}
       >
         <Image
@@ -32,12 +47,12 @@ const SignIn = () => {
           </Text>
 
           <TouchableOpacity
-            
+            onPress={handleLogin}
             className="bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"
           >
             <View className="flex flex-row items-center justify-center">
               <Image
-                
+                source={icons.google}
                 className="w-5 h-5"
                 resizeMode="contain"
               />
@@ -49,7 +64,7 @@ const SignIn = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default SignIn
+export default Auth;
