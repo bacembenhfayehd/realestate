@@ -15,14 +15,14 @@ import {
     platform: "com.restate",
     endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
     projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
-    databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
-    galleriesCollectionId:
-      process.env.EXPO_PUBLIC_APPWRITE_GALLERIES_COLLECTION_ID,
-    reviewsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_REVIEWS_COLLECTION_ID,
-    agentsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_AGENTS_COLLECTION_ID,
-    propertiesCollectionId:
-      process.env.EXPO_PUBLIC_APPWRITE_PROPERTIES_COLLECTION_ID,
-    bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID,
+    //databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
+    //galleriesCollectionId:
+      //process.env.EXPO_PUBLIC_APPWRITE_GALLERIES_COLLECTION_ID,
+    //reviewsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_REVIEWS_COLLECTION_ID,
+    //agentsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_AGENTS_COLLECTION_ID,
+    //propertiesCollectionId:
+     // process.env.EXPO_PUBLIC_APPWRITE_PROPERTIES_COLLECTION_ID,
+    //bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID,
   };
   
   export const client = new Client();
@@ -31,10 +31,10 @@ import {
     .setProject(config.projectId!)
     .setPlatform(config.platform!);
   
-  export const avatar = new Avatars(client);
-  export const account = new Account(client);
-  export const databases = new Databases(client);
-  export const storage = new Storage(client);
+  export const avatar = new Avatars(client); // service avatars
+  export const account = new Account(client); //service users 
+  //export const databases = new Databases(client);
+  //export const storage = new Storage(client);
   
   export async function login() {
     try {
@@ -97,7 +97,7 @@ import {
     }
   }
   
-  export async function getLatestProperties() {
+  /*export async function getLatestProperties() {
     try {
       const result = await databases.listDocuments(
         config.databaseId!,
@@ -164,4 +164,4 @@ import {
       console.error(error);
       return null;
     }
-  }
+  }*/
