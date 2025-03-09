@@ -10,11 +10,14 @@ import {
   } from "react-native-appwrite";
   import * as Linking from "expo-linking";
   import { openAuthSessionAsync } from "expo-web-browser";
+  import Constants from "expo-constants";
+
   
   export const config = {
-    platform: "com.restate",
-    endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
-    projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
+    platform: "com.benhfayedh.restate",
+    endpoint: 'https://cloud.appwrite.io/v1',
+    projectId: '67c568140035e5af8be1',
+    
     //databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
     //galleriesCollectionId:
       //process.env.EXPO_PUBLIC_APPWRITE_GALLERIES_COLLECTION_ID,
@@ -24,6 +27,8 @@ import {
      // process.env.EXPO_PUBLIC_APPWRITE_PROPERTIES_COLLECTION_ID,
     //bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID,
   };
+
+  
   
   export const client = new Client();
   client
@@ -40,7 +45,7 @@ import {
     try {
       const redirectUri = Linking.createURL("/");
   
-      const response = await account.createOAuth2Token(
+      const response = await account.createOAuth2Session(
         OAuthProvider.Google,
         redirectUri
       );
