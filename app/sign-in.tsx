@@ -22,7 +22,7 @@ const Auth = () => {
   if(isLogged && !loading) return <Redirect href='/'/>
 
 
-  const handleLogin = async () => {
+  /*const handleLogin = async () => {
 
     const result = await login();
 
@@ -32,7 +32,7 @@ const Auth = () => {
       Alert.alert('error , failed to login')
     }
    
-  };
+  };*/
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -62,7 +62,7 @@ const Auth = () => {
           </Text>
 
           <TouchableOpacity
-            onPress={handleLogin}
+            
             className="bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"
           >
             <View className="flex flex-row items-center justify-center">
