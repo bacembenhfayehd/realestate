@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Alert,
   Image,
+  Pressable,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -13,26 +14,26 @@ import icons from "@/constants/icons";
 import images from "@/constants/images";
 import { login } from "@/lib/appwrite";
 import { useGlobalContext } from "@/lib/global-provider";
-import { Redirect } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
+
 
 const Auth = () => {
-
   const {refetch,loading,isLogged} = useGlobalContext();
 
   if(isLogged && !loading) return <Redirect href='/'/>
+  
 
-
-  /*const handleLogin = async () => {
+  const handleLogin = async () => {
 
     const result = await login();
 
     if(result){
-      console.log('login success')
+      refetch();
     }else{
       Alert.alert('error , failed to login')
     }
    
-  };*/
+  };
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -61,17 +62,15 @@ const Auth = () => {
             Login to Real Scout with Google
           </Text>
 
-          <TouchableOpacity
-            
-            className="bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"
-          >
+          <TouchableOpacity className="bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5">
             <View className="flex flex-row items-center justify-center">
               <Image
                 source={icons.google}
                 className="w-5 h-5"
                 resizeMode="contain"
               />
-              <Text className="text-lg font-rubik-medium text-black-300 ml-2">
+
+              <Text onPress={handleLogin} className="text-lg font-rubik-medium text-black-300 ml-2">
                 Continue with Google
               </Text>
             </View>

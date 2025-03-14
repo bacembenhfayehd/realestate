@@ -6,7 +6,7 @@ import { useGlobalContext } from "@/lib/global-provider";
 
 export default function AppLayout() {
   const { loading, isLogged } = useGlobalContext();
-  const router = useRouter();
+  
 
   if (loading) {
     return (
