@@ -1,16 +1,13 @@
 import {
     Client,
     Account,
-    ID,
-    Databases,
     OAuthProvider,
     Avatars,
-    Query,
-    Storage,
+    
   } from "react-native-appwrite";
   import * as Linking from "expo-linking";
   import { openAuthSessionAsync } from "expo-web-browser";
-  import Constants from "expo-constants";
+ 
 
   
   export const config = {
@@ -85,23 +82,32 @@ import {
   
   export async function getCurrentUser() {
     try {
+      // Vérifier d'abord si une session existe
+      const session = await account.getSession('current')
+        .catch(() => null); // Capture l'erreur silencieusement
+      
+      // Si pas de session, l'utilisateur n'est pas connecté
+      if (!session) {
+        return null;
+      }
+      
+      // Si une session existe, on peut appeler account.get()
       const result = await account.get();
       if (result.$id) {
         const userAvatar = avatar.getInitials(result.name);
-  
+        
         return {
           ...result,
           avatar: userAvatar.toString(),
         };
       }
-  
+      
       return null;
     } catch (error) {
       console.log(error);
       return null;
     }
   }
-  
   /*export async function getLatestProperties() {
     try {
       const result = await databases.listDocuments(
